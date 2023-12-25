@@ -6,31 +6,36 @@ import { Component } from '@angular/core';
   template: `
     <section class="container">
       <!-- This article element represents and entire listing -->
-      <article class="listing">
+      @for(car of carList; track car.make) {
+        <article class="listing">
         <div class="image-parent">
           <img class="product-image" src="https://placehold.co/100x100" />
         </div>
         <section class="details">
-          <p class="title"><!-- car make and model--></p>
+          <p class="title">{{ car.make }} {{ car.model }}</p>
           <hr />
           <p class="detail">
             <span>Year</span>
-            <span><!-- year --></span>
+            <span>{{ car.year }}</span>
           </p>
           <div class="detail">
             <span>Transmission</span>
-            <span><!-- transmission --></span>
+            <span>{{ car.transmission }}</span>
           </div>
           <p class="detail">
             <span>Mileage</span>
-            <span><!-- miles --></span>
+            <span>{{ car.miles }}</span>
           </p>
           <p class="detail">
             <span>Price</span>
-            <span><!-- price --></span>
+            <span>{{ car.price }}</span>
           </p>
         </section>
       </article>
+      } @empty {
+        <p>No cars found</p>
+      }
+
     </section>
   `,
   styleUrl: 'app.component.css',
@@ -38,6 +43,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   carList = [
     {
+      transmission: 'automatic',
       make: 'Foyoda',
       model: 'Famery',
       miles: 54354,
@@ -45,6 +51,7 @@ export class AppComponent {
       year: 2022,
     },
     {
+      transmission: 'automatic',
       make: 'Ronda',
       model: 'Disaccord',
       miles: 100000,
@@ -52,6 +59,7 @@ export class AppComponent {
       year: 1991,
     },
     {
+      transmission: 'automatic',
       make: 'Specific Motors',
       model: 'Spoke',
       miles: 100000,
@@ -59,6 +67,7 @@ export class AppComponent {
       year: 1991,
     },
     {
+      transmission: 'automatic',
       make: 'Fjord',
       model: 'Pocus',
       miles: 1,
